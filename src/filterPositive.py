@@ -1,9 +1,5 @@
 """
-keywords:
- lda 
-topic analy
-
-either answer/question score > 50?
+either answer/question score < 0
 
 """
 
@@ -16,10 +12,10 @@ from pathlib import Path
 output_question_path = "../output/questionsML/"
 output_answer_path = "../output/answersML/"
 
-output_path_Q = "../output/questionsMLHigh/"
-output_path_A = "../output/answersMLHigh/"
+output_path_Q = "../output/questionsPositive/"
+output_path_A = "../output/answersPositive/"
 
-score_thre = 20
+score_thre = 0
 
 import xml.etree.ElementTree
 from bs4 import BeautifulSoup
