@@ -80,9 +80,10 @@ keywords = [
 import xml.etree.ElementTree
 import sys
 
+xmlPath = "../output/questionsCodeOrigin/" 
 
 def detectKeyword(num):
-    root = xml.etree.ElementTree.parse("post_"+str(num)+".xml").getroot()
+    root = xml.etree.ElementTree.parse(xmlPath+"post_"+str(num)+".xml").getroot()
     for keyword in keywords:
         if keyword in root.get('Body').lower() or keyword in root.get('Tags').lower():
             print(keyword)

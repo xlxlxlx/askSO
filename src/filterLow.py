@@ -1,9 +1,5 @@
 """
-keywords:
- lda 
-topic analy
-
-either answer/question score > 50?
+either answer/question score < 0
 
 """
 
@@ -16,10 +12,10 @@ from pathlib import Path
 output_question_path = "../output/questionsML/"
 output_answer_path = "../output/answersML/"
 
-output_path_Q = "../output/questionsMLHigh/"
-output_path_A = "../output/answersMLHigh/"
+output_path_Q = "../output/questionsMLLow/"
+output_path_A = "../output/answersMLLow/"
 
-score_thre = 20
+score_thre = 0
 
 import xml.etree.ElementTree
 from bs4 import BeautifulSoup
@@ -39,7 +35,7 @@ for post_f in os.listdir(output_question_path):
         continue
     score_flag = False
     ## Either high score Q or A
-    if int(score) >= score_thre:
+    if int(score) < score_thre:
         score_flag = True
     tags = qRoot.get('Tags')
 
@@ -51,7 +47,7 @@ for post_f in os.listdir(output_question_path):
     if Path(answer_file).exists():
         aRoot = xml.etree.ElementTree.parse(answer_file).getroot()
         ascore = qRoot.get('Score')
-        if int(ascore) >= score_thre:
+        if int(ascore) < score_thre:
             score_flag = True
         
         if not score_flag:

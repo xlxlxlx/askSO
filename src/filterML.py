@@ -1,13 +1,13 @@
 ## in both body and tags
 keywords = [
 "tensorflow",
-" torch",
+" torch ",
 " theano", # TheAnonymousType
 "caffe",
 #"microsoft azure",
 #"cuda", # it is related but too nvidia specific
 "cntk",
-"keras",
+" keras ", #RunWorkerAsync in c#
 
 "machine learning",
 "feature selection",
@@ -19,7 +19,7 @@ keywords = [
 "unsupervised learning",
 "sentiment analysis",
 "text mining",
-" gmm",
+#" gmm",
 "classification",
 #"regression", # just regression
 #"predict", #predicable
@@ -44,16 +44,16 @@ keywords = [
 "decision tree",
 "bayesian network",
 "naive bayes",
-"multinomial naive",
+"multinomial naive", 
 " svm",
 "limma",
-" lars", #dollars
+" lars ", #dollars
 " lasso", #IsSubclassOf, classobj
 "elastic net",
 #"hmm", #Hmm
-" dnn",
-" rnn",
-" cnn",
+#" dnn",
+#" rnn",
+#" cnn",    # name of variable for "sql connection" # cnn website
 "neural network",
 "topic analy",
 
@@ -97,11 +97,13 @@ import json
 from shutil import copyfile
 from pathlib import Path
 
-output_question_path = "questionsCodeOrigin/"
-output_answer_path = "answersCode/"
+envi_path = "../output/"
 
-output_path_Q = "questionsML/"
-output_path_A = "answersML/"
+output_question_path = envi_path+"questionsML_coarse/"
+output_answer_path = envi_path+"answersML_coarse/"
+
+output_path_Q = envi_path+"questionsML/"
+output_path_A = envi_path+"answersML/"
 
 import xml.etree.ElementTree
 from bs4 import BeautifulSoup

@@ -26,8 +26,8 @@ import json
 from shutil import copyfile
 from pathlib import Path
 
-output_question_path = "questionsML/"
-output_answer_path = "answersML/"
+output_question_path = "questionsCodeOrigin/"
+output_answer_path = "answersCode/"
 
 output_path_Q = "questionsLDA/"
 output_path_A = "answersLDA/"
@@ -46,8 +46,8 @@ for post_f in os.listdir(output_question_path):
     ## handle it later
     code = BeautifulSoup(body, 'lxml').code
     ## ensure enough length of code snippet
-    if len(str(code)) < 100:
-        continue
+    #if len(str(code)) < 100:
+    #    continue
     score_flag = False
     ## Either high score Q or A
     if int(score) >= 50:
@@ -65,7 +65,7 @@ for post_f in os.listdir(output_question_path):
             if int(ascore) >= 50:
                 score_flag = True
             
-            if not score_flag:
-                continue
+            #if not score_flag:
+            #    continue
             copyfile(output_question_path+"post_"+post_id+".xml", output_path_Q+"post_"+post_id+".xml")
             copyfile(answer_file, output_path_A+"post_"+answer_id+".xml")
