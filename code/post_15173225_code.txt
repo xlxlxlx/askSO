@@ -1,0 +1,8 @@
+<code>s1 = "This is a foo bar sentence ."
+s2 = "This sentence is similar to a foo bar sentence ."
+s3 = "What is this string ? Totally not related to the other two lines ."
+
+cosine_sim(s1, s2) # Should give high cosine similarity
+cosine_sim(s1, s3) # Shouldn't give high cosine similarity value
+cosine_sim(s2, s3) # Shouldn't give high cosine similarity value
+</code>

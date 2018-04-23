@@ -1,0 +1,6 @@
+<code>Stock prices    indicator1    indicator2
+2.0             123           1252
+1.0             ..            ..
+..              .             . 
+.
+</code>

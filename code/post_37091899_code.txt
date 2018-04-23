@@ -1,0 +1,122 @@
+<code>from __future__ import print_function
+import tensorflow as tf
+
+def file_len(fname):
+    with open(fname) as f:
+        for i, l in enumerate(f):
+            pass
+    return i + 1
+
+filename = "csv_test_data.csv"
+
+# setup text reader
+file_length = file_len(filename)
+filename_queue = tf.train.string_input_producer([filename])
+reader = tf.TextLineReader(skip_header_lines=1)
+_, csv_row = reader.read(filename_queue)
+
+# setup CSV decoding
+record_defaults = [[0],[0],[0],[0],[0]]
+col1,col2,col3,col4,col5 = tf.decode_csv(csv_row, record_defaults=record_defaults)
+
+# turn features back into a tensor
+features = tf.pack([col1,col2,col3,col4])
+
+print("loading, " + str(file_length) + " line(s)\n")
+with tf.Session() as sess:
+  tf.initialize_all_variables().run()
+
+  # start populating filename queue
+  coord = tf.train.Coordinator()
+  threads = tf.train.start_queue_runners(coord=coord)
+
+  for i in range(file_length):
+    # retrieve a single instance
+    example, label = sess.run([features, col5])
+    print(example, label)
+
+  coord.request_stop()
+  coord.join(threads)
+  print("\ndone loading")
+</code>
+<code>0,0,0,0,0
+0,15,0,0,0
+0,30,0,0,0
+0,45,0,0,0
+</code>
+<code>def reformat(dataset, labels):
+  dataset = dataset.reshape((-1, image_size * image_size)).astype(np.float32)
+  # Map 2 to [0.0, 1.0, 0.0 ...], 3 to [0.0, 0.0, 1.0 ...]
+  labels = (np.arange(num_labels) == labels[:,None]).astype(np.float32)
+  return dataset, labels
+train_dataset, train_labels = reformat(train_dataset, train_labels)
+valid_dataset, valid_labels = reformat(valid_dataset, valid_labels)
+test_dataset, test_labels = reformat(test_dataset, test_labels)
+print('Training set', train_dataset.shape, train_labels.shape)
+print('Validation set', valid_dataset.shape, valid_labels.shape)
+print('Test set', test_dataset.shape, test_labels.shape)
+</code>
+<code>tf.train.shuffle_batch</code>
+<code>  for i in range(file_length):
+    # retrieve a single instance
+    example, label = sess.run([features, colRelevant])
+    example_batch, label_batch = tf.train.shuffle_batch([example, label], batch_size=file_length, capacity=file_length, min_after_dequeue=10000)
+    print(example, label)
+</code>
+<code>for i in range(file_length)</code>
+<code>from __future__ import print_function
+import numpy as np
+import tensorflow as tf
+import math as math
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('dataset')
+args = parser.parse_args()
+
+def file_len(fname):
+    with open(fname) as f:
+        for i, l in enumerate(f):
+            pass
+    return i + 1
+
+def read_from_csv(filename_queue):
+  reader = tf.TextLineReader(skip_header_lines=1)
+  _, csv_row = reader.read(filename_queue)
+  record_defaults = [[0],[0],[0],[0],[0]]
+  colHour,colQuarter,colAction,colUser,colLabel = tf.decode_csv(csv_row, record_defaults=record_defaults)
+  features = tf.pack([colHour,colQuarter,colAction,colUser])  
+  label = tf.pack([colLabel])  
+  return features, label
+
+def input_pipeline(batch_size, num_epochs=None):
+  filename_queue = tf.train.string_input_producer([args.dataset], num_epochs=num_epochs, shuffle=True)  
+  example, label = read_from_csv(filename_queue)
+  min_after_dequeue = 10000
+  capacity = min_after_dequeue + 3 * batch_size
+  example_batch, label_batch = tf.train.shuffle_batch(
+      [example, label], batch_size=batch_size, capacity=capacity,
+      min_after_dequeue=min_after_dequeue)
+  return example_batch, label_batch
+
+file_length = file_len(args.dataset) - 1
+examples, labels = input_pipeline(file_length, 1)
+
+with tf.Session() as sess:
+  tf.initialize_all_variables().run()
+
+  # start populating filename queue
+  coord = tf.train.Coordinator()
+  threads = tf.train.start_queue_runners(coord=coord)
+
+  try:
+    while not coord.should_stop():
+      example_batch, label_batch = sess.run([examples, labels])
+      print(example_batch)
+  except tf.errors.OutOfRangeError:
+    print('Done training, epoch reached')
+  finally:
+    coord.request_stop()
+
+  coord.join(threads) 
+</code>

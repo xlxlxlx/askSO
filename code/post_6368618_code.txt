@@ -1,0 +1,7 @@
+<code> [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue]
+                                       withHandler: ^(CMDeviceMotion *motion, NSError *error)
+     {
+         CMAttitude *attitude = motion.attitude;
+         NSLog(@"pitch: %f, roll: %f, yaw: %f]", attitude.pitch, attitude.roll, attitude.yaw);
+     }];
+</code>

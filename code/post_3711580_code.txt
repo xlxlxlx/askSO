@@ -1,0 +1,26 @@
+<code>    Table "public.slice"
+  Column  | Type | Modifiers 
+----------+------+-----------
+ id       | text | not null
+ name     | text | 
+Referenced by:
+    TABLE "transaction" CONSTRAINT "transaction_slice_id_fkey" FOREIGN KEY (slice_id) REFERENCES slice(id)
+ Table "public.transaction"
+  Column  | Type | Modifiers 
+----------+------+-----------
+ id       | text | not null
+ slice_id | text | 
+Referenced by:
+    TABLE "classification_item" CONSTRAINT "classification_item_transaction_id_fkey" FOREIGN KEY (transaction_id) REFERENCES transaction(id)
+Table "public.classification_item"
+     Column     | Type | Modifiers 
+----------------+------+-----------
+ id             | text | not null
+ transaction_id | text | 
+Foreign-key constraints:
+    "classification_item_transaction_id_fkey" FOREIGN KEY (transaction_id) REFERENCES transaction(id)
+</code>
+<code>=# delete from classification_item where transaction_id= #...? 
+=# delete from transaction where slice_id= #...? 
+=# delete from slice where name='my_slice';
+</code>

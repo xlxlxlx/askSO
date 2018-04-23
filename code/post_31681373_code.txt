@@ -1,0 +1,49 @@
+<code>from sklearn import datasets
+from sklearn.multiclass import OneVsRestClassifier
+from sklearn.svm import SVC
+iris = datasets.load_iris()
+X, y = iris.data, iris.target
+clf = OneVsRestClassifier(SVC(kernel='linear', probability=True, class_weight='auto'))
+clf.fit(X, y)
+proba = clf.predict_proba(X)
+</code>
+<code>train-set (1422392,29)
+test-set (233081,29)
+</code>
+<code>from sklearn import datasets
+from sklearn.multiclass import OneVsRestClassifier
+from sklearn.svm import SVC,LinearSVC
+from sklearn.linear_model import SGDClassifier
+import joblib
+import numpy as np
+from sklearn import grid_search
+import multiprocessing
+import numpy as np
+import math
+
+def new_func(a):                              #converts array(x) elements to (1/(1 + e(-x)))
+    a=1/(1 + math.exp(-a))
+    return a
+
+if __name__ == '__main__':
+    iris = datasets.load_iris()
+    cores=multiprocessing.cpu_count()-2
+    X, y = iris.data, iris.target                       #loading dataset
+
+    C_range = 10.0 ** np.arange(-4, 4);                  #c value range 
+    param_grid = dict(estimator__C=C_range.tolist())              
+
+    svr = OneVsRestClassifier(LinearSVC(class_weight='auto'),n_jobs=cores) ################LinearSVC Code faster        
+    #svr = OneVsRestClassifier(SVC(kernel='linear', probability=True,  ##################SVC code slow
+    #   class_weight='auto'),n_jobs=cores)
+
+    clf = grid_search.GridSearchCV(svr, param_grid,n_jobs=cores,verbose=2)  #grid search
+    clf.fit(X, y)                                                   #training svm model                                     
+
+    decisions=clf.decision_function(X)                             #outputs decision functions
+    #prob=clf.predict_proba(X)                                     #only for SVC outputs probablilites
+    print decisions[:5,:]
+    vecfunc = np.vectorize(new_func)
+    prob=vecfunc(decisions)                                        #converts deicision to (1/(1 + e(-x)))
+    print prob[:5,:]
+</code>

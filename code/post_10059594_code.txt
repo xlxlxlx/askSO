@@ -1,0 +1,18 @@
+<code>training set---
+round-red
+round-orange
+oblong-yellow
+round-red
+
+dataset----
+round-red
+round-orange
+round-red
+round-orange
+oblong-yellow
+round-red
+round-orange
+oblong-yellow
+oblong-yellow
+round-red
+</code>

@@ -1,0 +1,37 @@
+<code>import pandas as pd
+import numpy as np
+from sklearn import preprocessing
+
+scaler = preprocessing.MinMaxScaler()
+
+dfTest = pd.DataFrame({'A':[14.00,90.20,90.95,96.27,91.21],'B':[103.02,107.26,110.35,114.23,114.68], 'C':['big','small','big','small','small']})
+min_max_scaler = preprocessing.MinMaxScaler()
+
+def scaleColumns(df, cols_to_scale):
+    for col in cols_to_scale:
+        df[col] = pd.DataFrame(min_max_scaler.fit_transform(pd.DataFrame(dfTest[col])),columns=[col])
+    return df
+
+dfTest
+
+    A   B   C
+0    14.00   103.02  big
+1    90.20   107.26  small
+2    90.95   110.35  big
+3    96.27   114.23  small
+4    91.21   114.68  small
+
+scaled_df = scaleColumns(dfTest,['A','B'])
+scaled_df
+
+A   B   C
+0    0.000000    0.000000    big
+1    0.926219    0.363636    small
+2    0.935335    0.628645    big
+3    1.000000    0.961407    small
+4    0.938495    1.000000    small
+</code>
+<code>bad_output = min_max_scaler.fit_transform(dfTest['A'])</code>
+<code>dfTest2 = dfTest.drop('C', axis = 1)
+good_output = min_max_scaler.fit_transform(dfTest2)
+good_output</code>

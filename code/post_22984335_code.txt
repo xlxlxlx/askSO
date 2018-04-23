@@ -1,0 +1,23 @@
+<code>import pandas as pd
+import pylab as pl
+from sklearn import datasets
+from sklearn.decomposition import PCA
+
+# load dataset
+iris = datasets.load_iris()
+df = pd.DataFrame(iris.data, columns=iris.feature_names)
+
+# normalize data
+df_norm = (df - df.mean()) / df.std()
+
+# PCA
+pca = PCA(n_components=2)
+pca.fit_transform(df_norm.values)
+print pca.explained_variance_ratio_
+</code>
+<code>In [42]: pca.explained_variance_ratio_
+Out[42]: array([ 0.72770452,  0.23030523])
+</code>
+<code>In [47]: print iris.feature_names
+['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)', 'petal width (cm)']
+</code>

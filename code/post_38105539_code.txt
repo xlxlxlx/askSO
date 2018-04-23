@@ -1,0 +1,6 @@
+<code>from sklearn.datasets import load_iris
+import pandas as pd
+data = load_iris()
+print(type(data))
+data1 = pd. # Is there a Pandas method to accomplish this?
+</code>

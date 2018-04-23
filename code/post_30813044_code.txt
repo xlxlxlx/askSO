@@ -1,0 +1,5 @@
+<code>regr = LinearRegression()
+regr.fit(df2.iloc[1:1000, 5].values, df2.iloc[1:1000, 2].values)
+</code>
+<code>ValueError: Found arrays with inconsistent numbers of samples: [  1 999]
+</code>

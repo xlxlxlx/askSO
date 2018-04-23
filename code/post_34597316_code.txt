@@ -1,0 +1,4 @@
+<code>"dropout is implemented by only keeping a neuron active with some probability p (a hyperparameter), or setting it to zero otherwise."</code>
+<code>With probability keep_prob, outputs the input element scaled up by 1 / keep_prob, otherwise outputs 0.</code>
+<code>1/keep_prob</code>
+<code>1/keep_prob</code>

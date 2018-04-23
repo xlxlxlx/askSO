@@ -1,0 +1,71 @@
+<code>age,hours_per_week,education,sex,salaryRange
+38,40,"hs-grad","male","A"
+28,40,"bachelors","female","A"
+52,45,"hs-grad","male","B"
+31,50,"masters","female","B"
+42,40,"bachelors","male","B"
+</code>
+<code>val data = sqlContext.csvFile("/home/dusan/sample.csv")
+</code>
+<code>val toInt    = udf[Int, String]( _.toInt)
+val dataFixed = data.withColumn("age", toInt(data("age"))).withColumn("hours_per_week",toInt(data("hours_per_week")))
+</code>
+<code>scala&gt; dataFixed.printSchema
+root
+ |-- age: integer (nullable = true)
+ |-- hours_per_week: integer (nullable = true)
+ |-- education: string (nullable = true)
+ |-- sex: string (nullable = true)
+ |-- salaryRange: string (nullable = true)
+</code>
+<code>val rf = new RandomForestClassifier()
+val pipeline = new Pipeline().setStages(Array(rf)) 
+val cv = new CrossValidator().setNumFolds(10).setEstimator(pipeline).setEvaluator(new BinaryClassificationEvaluator)
+</code>
+<code>val cmModel = cv.fit(dataFixed)
+</code>
+<code>import org.apache.spark.SparkConf
+import org.apache.spark.SparkContext
+import org.apache.spark.ml.classification.RandomForestClassifier
+import org.apache.spark.ml.evaluation.BinaryClassificationEvaluator
+import org.apache.spark.ml.tuning.CrossValidator
+import org.apache.spark.ml.Pipeline
+import org.apache.spark.sql.DataFrame
+
+import org.apache.spark.sql.functions._
+import org.apache.spark.mllib.linalg.{Vector, Vectors}
+
+
+object SampleClassification {
+
+  def main(args: Array[String]): Unit = {
+
+    //set spark context
+    val conf = new SparkConf().setAppName("Simple Application").setMaster("local");
+    val sc = new SparkContext(conf)
+    val sqlContext = new org.apache.spark.sql.SQLContext(sc)
+
+    import sqlContext.implicits._
+    import com.databricks.spark.csv._
+
+    //load data by using databricks "Spark CSV Library" 
+    val data = sqlContext.csvFile("/home/dusan/sample.csv")
+
+    //by default all columns are imported as string so we need to change "age" and  "hours_per_week" to Int
+    val toInt    = udf[Int, String]( _.toInt)
+    val dataFixed = data.withColumn("age", toInt(data("age"))).withColumn("hours_per_week",toInt(data("hours_per_week")))
+
+
+    val rf = new RandomForestClassifier()
+
+    val pipeline = new Pipeline().setStages(Array(rf))
+
+    val cv = new CrossValidator().setNumFolds(10).setEstimator(pipeline).setEvaluator(new BinaryClassificationEvaluator)
+
+    // this fails with error
+    //java.lang.IllegalArgumentException: Field "features" does not exist.
+    val cmModel = cv.fit(dataFixed) 
+  }
+
+}
+</code>
