@@ -1,0 +1,10 @@
+<code>classifier = nltk.NaiveBayesClassifier.train(training_set)
+# look inside the classifier train method in the source code of the NLTK library
+
+def train(labeled_featuresets, estimator=nltk.probability.ELEProbDist):
+    # Create the P(label) distribution
+    label_probdist = estimator(label_freqdist)
+    # Create the P(fval|label, fname) distribution
+    feature_probdist = {}
+    return NaiveBayesClassifier(label_probdist, feature_probdist)
+</code>

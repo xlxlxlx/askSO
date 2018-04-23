@@ -1,0 +1,26 @@
+<code>import nltk
+sent_tokenize = nltk.data.load('tokenizers/punkt/english.pickle')
+
+'''
+(Chapter 16)
+A clam for supper? a cold clam; is THAT what you mean, Mrs. Hussey?" says I, "but
+that's a rather cold and clammy reception in the winter time, ain't it, Mrs. Hussey?"
+'''
+sample = 'A clam for supper? a cold clam; is THAT what you mean, Mrs. Hussey?" says I, "but that\'s a rather cold and clammy reception in the winter time, ain\'t it, Mrs. Hussey?"'
+
+print "\n-----\n".join(sent_tokenize.tokenize(sample))
+'''
+OUTPUT
+"A clam for supper?
+-----
+a cold clam; is THAT what you mean, Mrs.
+-----
+Hussey?
+-----
+" says I, "but that\'s a rather cold and clammy reception in the winter time, ain\'t it, Mrs.
+-----
+Hussey?
+-----
+"
+'''
+</code>

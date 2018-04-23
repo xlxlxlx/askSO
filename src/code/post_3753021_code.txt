@@ -1,0 +1,7 @@
+<code>v = 'go'
+present = present_tense(v)
+print present # prints "going"
+
+past = past_tense(v)
+print past # prints "went"
+</code>

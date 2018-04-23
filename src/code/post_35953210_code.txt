@@ -1,0 +1,34 @@
+<code>$ sudo pip install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.7.1-cp27-none-linux_x86_64.whl
+[sudo] password for ubuntu: 
+The directory '/home/ubuntu/.cache/pip/http' or its parent directory is not owned by the current user and the cache has been disabled. Please check the permissions and owner of that directory. If executing pip with sudo, you may want sudo's -H flag.
+The directory '/home/ubuntu/.cache/pip' or its parent directory is not owned by the current user and caching wheels has been disabled. check the permissions and owner of that directory. If executing pip with sudo, you may want sudo's -H flag.
+Collecting tensorflow==0.7.1 from https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.7.1-cp27-none-linux_x86_64.whl
+  Downloading https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.7.1-cp27-none-linux_x86_64.whl (13.8MB)
+    100% |████████████████████████████████| 13.8MB 32kB/s 
+Requirement already up-to-date: six&gt;=1.10.0 in /usr/local/lib/python2.7/dist-packages (from tensorflow==0.7.1)
+Requirement already up-to-date: protobuf==3.0.0b2 in /usr/local/lib/python2.7/dist-packages (from tensorflow==0.7.1)
+Requirement already up-to-date: wheel in /usr/local/lib/python2.7/dist-packages (from tensorflow==0.7.1)
+Requirement already up-to-date: numpy&gt;=1.8.2 in /usr/local/lib/python2.7/dist-packages (from tensorflow==0.7.1)
+Requirement already up-to-date: setuptools in /usr/local/lib/python2.7/dist-packages (from protobuf==3.0.0b2-&gt;tensorflow==0.7.1)
+Installing collected packages: tensorflow
+  Found existing installation: tensorflow 0.7.1
+    Uninstalling tensorflow-0.7.1:
+      Successfully uninstalled tensorflow-0.7.1
+Successfully installed tensorflow-0.7.1
+</code>
+<code>$ ipython
+
+/git/tensorflow/tensorflow/__init__.py in &lt;module&gt;()
+     21 from __future__ import print_function
+     22 
+---&gt; 23 from tensorflow.python import *
+
+/git/tensorflow/tensorflow/python/__init__.py in &lt;module&gt;()
+     43 _default_dlopen_flags = sys.getdlopenflags()
+     44 sys.setdlopenflags(_default_dlopen_flags | ctypes.RTLD_GLOBAL)
+---&gt; 45 from tensorflow.python import pywrap_tensorflow
+     46 sys.setdlopenflags(_default_dlopen_flags)
+     47 
+
+ImportError: cannot import name pywrap_tensorflow
+</code>

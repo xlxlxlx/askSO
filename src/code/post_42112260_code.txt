@@ -1,0 +1,4 @@
+<code>keras.callbacks.TensorBoard(log_dir='/Graph', histogram_freq=0,
+                            write_graph=True, write_images=True)
+</code>
+<code>&lt;keras.callbacks.TensorBoard at 0x7f9abb3898&gt;</code>

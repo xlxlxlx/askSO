@@ -1,0 +1,12 @@
+<code>rows = data.index
+row_count = len(rows)
+random.shuffle(list(rows))
+
+data.reindex(rows)
+
+training_data = data[row_count // 10:]
+testing_data = data[:row_count // 10]
+</code>
+<code>sklearn</code>
+<code>IndexError: each subindex must be either a slice, an integer, Ellipsis, or newaxis
+</code>

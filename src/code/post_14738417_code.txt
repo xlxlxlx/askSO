@@ -1,0 +1,50 @@
+<code>Exception Type       : System.Windows.Markup.XamlParseException
+Exception Message    : Provide value on 'System.Windows.StaticResourceExtension' threw an exception.
+Exception Stack Trace:
+    at System.Windows.Markup.WpfXamlLoader.Load(XamlReader xamlReader, IXamlObjectWriterFactory writerFactory, Boolean skipJournaledProperties, Object rootObject, XamlObjectWriterSettings settings, Uri baseUri)
+    at System.Windows.Markup.WpfXamlLoader.LoadBaml(XamlReader xamlReader, Boolean skipJournaledProperties, Object rootObject, XamlAccessLevel accessLevel, Uri baseUri)
+    at System.Windows.Markup.XamlReader.LoadBaml(Stream stream, ParserContext parserContext, Object parent, Boolean closeStream)
+    at System.Windows.Application.LoadComponent(Object component, Uri resourceLocator)
+    at SquaredInfinity.VSCommands.UI.Views.DefaultAlertView.InitializeComponent()
+    at SquaredInfinity.VSCommands.Foundation.Services.VSCUIService.GetDefaultAlertViewModel(String alertMessage, String alertDialogTitle)
+    at SquaredInfinity.Foundation.Presentation.Services.UIService.GetDefaultAlertViewModel(String alertMessage)
+    at SquaredInfinity.Foundation.Presentation.Services.UIService.ShowAlert(String message)
+    at SquaredInfinity.VSCommands.VSCommandsPackage.Initialize()
+Exception Data   : [EmptyOrNull]
+Inner Exception:
+Exception Type       : System.Exception
+Exception Message    : Cannot find resource named 'VSC.Button'. Resource names are case sensitive.
+Exception Stack Trace:    at System.Windows.StaticResourceExtension.ProvideValueInternal(IServiceProvider serviceProvider, Boolean allowDeferredReference)
+                      at System.Windows.StaticResourceExtension.ProvideValue(IServiceProvider serviceProvider)
+                      at MS.Internal.Xaml.Runtime.ClrObjectRuntime.CallProvideValue(MarkupExtension me, IServiceProvider serviceProvider)
+Exception Data   : [EmptyOrNull]
+</code>
+<code>System.ComponentModel.Composition.CompositionException: The composition produced a single composition error. The root cause is provided below. Review the CompositionException.Errors property for more detailed information.
+
+1) The current type,    SquaredInfinity.Foundation.Configuration.Services.IConfigurationService, is an interface and cannot be constructed. Are you missing a type mapping?
+Resulting in: Resolution of the dependency failed, type = "SquaredInfinity.Foundation.Configuration.Services.IConfigurationService", name = "(none)".
+Exception occurred while: while resolving.
+Exception is: InvalidOperationException - The current type, SquaredInfinity.Foundation.Configuration.Services.IConfigurationService, is an interface and cannot be constructed. Are you missing a type mapping?
+-----------------------------------------------
+At the time of the exception, the container was:
+  Resolving SquaredInfinity.Foundation.Configuration.Services.IConfigurationService,(none)
+
+Resulting in: An exception occurred while trying to create an instance of type '#Btb.#Rtb'.
+
+Resulting in: Cannot activate part '#Btb.#Rtb'.
+Element: #Btb.#Rtb --&gt;  #Btb.#Rtb
+
+Resulting in: Cannot get export '#Btb.#Rtb (ContractName="Microsoft.VisualStudio.Text.Classification.IClassifierProvider")' from part '#Btb.#Rtb'.
+Element: #Btb.#Rtb (ContractName="Microsoft.VisualStudio.Text.Classification.IClassifierProvider") --&gt;  #Btb.#Rtb
+
+   at System.ComponentModel.Composition.Hosting.CompositionServices.GetExportedValueFromComposedPart(ImportEngine engine, ComposablePart part, ExportDefinition definition)
+   at System.ComponentModel.Composition.Hosting.CatalogExportProvider.GetExportedValue(CatalogPart part, ExportDefinition export, Boolean isSharedPart)
+   at System.ComponentModel.Composition.Hosting.CatalogExportProvider.CatalogExport.GetExportedValueCore()
+   at System.ComponentModel.Composition.Primitives.Export.get_Value()
+   at System.ComponentModel.Composition.ExportServices.GetCastedExportedValue[T](Export export)
+   at System.ComponentModel.Composition.ExportServices.&lt;&gt;c__DisplayClass4`2.&lt;CreateStronglyTypedLazyOfTM&gt;b__1()
+   at System.Lazy`1.CreateValue()
+   at System.Lazy`1.LazyInitValue()
+   at System.Lazy`1.get_Value()
+   at Microsoft.VisualStudio.Text.Utilities.GuardedOperations.InvokeMatchingFactories[TExtensionInstance,TExtensionFactory,TMetadataView](IEnumerable`1 lazyFactories, Func`2 getter, IContentType dataContentType, Object errorSource)
+</code>

@@ -1,0 +1,7 @@
+<code>object=Robot.ScanSurroundings(300,400);
+if (Objects.isEatable(object))
+{
+   Robot.moveLeftArm(300,400);
+   Robot.pickObject(object);
+}
+</code>

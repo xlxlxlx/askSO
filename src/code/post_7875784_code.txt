@@ -1,0 +1,28 @@
+<code>manhattan_distance = 0
+iterate over all tiles
+if the tile is not the blank tile:
+find the coordinates of this tile on the goal board
+manhattan_distance += abs(x - goal_x) + abs(y - goal_y)
+</code>
+<code>int ManhattanDistance(Puzzle p, State b){
+   State goal = getFinalState(p);
+   int size = getSize(b);
+   int distance = 0;
+   if (getSize(goal) == size){ // both states are the same size
+      int i, j;
+      for(i=0; i&lt;size; i++){
+         for(j=0; j&lt;size; j++){ // iterate over all tiles
+            int a = getStateValue(b, i, j); // what is the number on this tile?
+            if (a != 'B'){ // if it's not the blank tile
+               int final_cordinates[2];
+               getTileCoords(goal, a, final_cordinates); // find the coordinates on the other board
+               int final_i = final_cordinates[0];
+               int final_j = final_cordinates[1];
+               distance +=  abs(i - final_i) + abs(j - final_j);
+            }
+         }
+      }
+   }
+   return distance;
+}
+</code>

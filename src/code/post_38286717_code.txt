@@ -1,0 +1,101 @@
+<code>loss = tf.reduce_mean( tf.nn.softmax_cross_entropy_with_logits(out_layer, tf_train_labels) + 0.01*tf.nn.l2_loss(out_weights))
+</code>
+<code>#some importing
+from __future__ import print_function
+import numpy as np
+import tensorflow as tf
+from six.moves import cPickle as pickle
+from six.moves import range
+
+#loading data
+pickle_file = '/home/maxkhk/Documents/Udacity/DeepLearningCourse/SourceCode/tensorflow/examples/udacity/notMNIST.pickle'
+
+with open(pickle_file, 'rb') as f:
+  save = pickle.load(f)
+  train_dataset = save['train_dataset']
+  train_labels = save['train_labels']
+  valid_dataset = save['valid_dataset']
+  valid_labels = save['valid_labels']
+  test_dataset = save['test_dataset']
+  test_labels = save['test_labels']
+  del save  # hint to help gc free up memory
+  print('Training set', train_dataset.shape, train_labels.shape)
+  print('Validation set', valid_dataset.shape, valid_labels.shape)
+  print('Test set', test_dataset.shape, test_labels.shape)
+
+
+#prepare data to have right format for tensorflow
+#i.e. data is flat matrix, labels are onehot
+
+image_size = 28
+num_labels = 10
+
+def reformat(dataset, labels):
+  dataset = dataset.reshape((-1, image_size * image_size)).astype(np.float32)
+  # Map 0 to [1.0, 0.0, 0.0 ...], 1 to [0.0, 1.0, 0.0 ...]
+  labels = (np.arange(num_labels) == labels[:,None]).astype(np.float32)
+  return dataset, labels
+train_dataset, train_labels = reformat(train_dataset, train_labels)
+valid_dataset, valid_labels = reformat(valid_dataset, valid_labels)
+test_dataset, test_labels = reformat(test_dataset, test_labels)
+print('Training set', train_dataset.shape, train_labels.shape)
+print('Validation set', valid_dataset.shape, valid_labels.shape)
+print('Test set', test_dataset.shape, test_labels.shape)
+
+
+#now is the interesting part - we are building a network with
+#one hidden ReLU layer and out usual output linear layer
+
+#we are going to use SGD so here is our size of batch
+batch_size = 128
+
+#building tensorflow graph
+graph = tf.Graph()
+with graph.as_default():
+      # Input data. For the training data, we use a placeholder that will be fed
+  # at run time with a training minibatch.
+  tf_train_dataset = tf.placeholder(tf.float32,
+                                    shape=(batch_size, image_size * image_size))
+  tf_train_labels = tf.placeholder(tf.float32, shape=(batch_size, num_labels))
+  tf_valid_dataset = tf.constant(valid_dataset)
+  tf_test_dataset = tf.constant(test_dataset)
+
+  #now let's build our new hidden layer
+  #that's how many hidden neurons we want
+  num_hidden_neurons = 1024
+  #its weights
+  hidden_weights = tf.Variable(
+    tf.truncated_normal([image_size * image_size, num_hidden_neurons]))
+  hidden_biases = tf.Variable(tf.zeros([num_hidden_neurons]))
+
+  #now the layer itself. It multiplies data by weights, adds biases
+  #and takes ReLU over result
+  hidden_layer = tf.nn.relu(tf.matmul(tf_train_dataset, hidden_weights) + hidden_biases)
+
+  #time to go for output linear layer
+  #out weights connect hidden neurons to output labels
+  #biases are added to output labels  
+  out_weights = tf.Variable(
+    tf.truncated_normal([num_hidden_neurons, num_labels]))  
+
+  out_biases = tf.Variable(tf.zeros([num_labels]))  
+
+  #compute output  
+  out_layer = tf.matmul(hidden_layer,out_weights) + out_biases
+  #our real output is a softmax of prior result
+  #and we also compute its cross-entropy to get our loss
+  loss = tf.reduce_mean( tf.nn.softmax_cross_entropy_with_logits(out_layer, tf_train_labels))
+
+  #now we just minimize this loss to actually train the network
+  optimizer = tf.train.GradientDescentOptimizer(0.5).minimize(loss)
+
+  #nice, now let's calculate the predictions on each dataset for evaluating the
+  #performance so far
+  # Predictions for the training, validation, and test data.
+  train_prediction = tf.nn.softmax(out_layer)
+  valid_relu = tf.nn.relu(  tf.matmul(tf_valid_dataset, hidden_weights) + hidden_biases)
+  valid_prediction = tf.nn.softmax( tf.matmul(valid_relu, out_weights) + out_biases) 
+
+  test_relu = tf.nn.relu( tf.matmul( tf_test_dataset, hidden_weights) + hidden_biases)
+  test_prediction = tf.nn.softmax(tf.matmul(test_relu, out_weights) + out_biases)
+</code>

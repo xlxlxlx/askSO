@@ -1,0 +1,14 @@
+<code>simple_grammar = nltk.parse_cfg("""
+S -&gt; NP VP
+PP -&gt; P NP
+NP -&gt; Det N | Det N PP
+VP -&gt; V NP | VP PP
+Det -&gt; 'a' | 'A'
+N -&gt; 'car' | 'door'
+V -&gt; 'has'
+P -&gt; 'in' | 'for'
+ """);
+</code>
+<code>parser = nltk.ChartParser(simple_grammar)
+trees = parser.nbest_parse("A car has a door")
+</code>

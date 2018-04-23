@@ -1,0 +1,41 @@
+<code>import multiprocessing
+from sklearn import svm
+import itertools
+
+#first read some data
+#X will be my feature Numpy 2D array
+#y will be my 1D Numpy array of labels
+
+#define the grid        
+C = [0.1, 1]
+gamma = [0.0]
+params = [C, gamma]
+grid = list(itertools.product(*params))
+GRID_hx = []
+
+def worker(par, grid_list):
+    #define a sklearn model
+    clf = svm.SVC(C=g[0], gamma=g[1],probability=True,random_state=SEED)
+    #run a cross validation fuction: returns error
+    ll = my_cross_validation_function(X, y, model=clf, n=1, test_size=0.2)
+    print(par, ll)
+    grid_list.append((par, ll))
+
+
+if __name__ == '__main__':
+   manager = multiprocessing.Manager()
+   GRID_hx = manager.list()
+   jobs = []
+   for g in grid:
+      p = multiprocessing.Process(target=worker, args=(g,GRID_hx))
+      jobs.append(p)
+      p.start()
+      p.join()
+
+   print("\n-------------------")
+   print("SORTED LIST")
+   print("-------------------")
+   L = sorted(GRID_hx, key=itemgetter(1))
+   for l in L[:5]:
+      print l
+</code>

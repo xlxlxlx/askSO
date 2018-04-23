@@ -1,0 +1,77 @@
+<code>#include &lt;iostream&gt;
+#include &lt;opencv2/core/core.hpp&gt;
+#include &lt;opencv2/highgui/highgui.hpp&gt;
+#include &lt;opencv2/imgproc/imgproc.hpp&gt;
+
+using namespace std;
+using namespace cv;
+
+Mat src, grey;
+int thresh = 10;
+
+const char* windowName = "Contours";
+
+void detectContours(int,void*);
+
+int main()
+{
+    src = imread("C:/Users/Public/Pictures/Sample Pictures/Penguins.jpg");
+
+    //Convert to grey scale
+    cvtColor(src,grey,CV_BGR2GRAY);
+
+    //Remove the noise
+    cv::GaussianBlur(grey,grey,Size(3,3),0);
+
+    //Create the window
+    namedWindow(windowName);
+
+    //Display the original image
+    namedWindow("Original");
+    imshow("Original",src);
+
+    //Create the trackbar
+    cv::createTrackbar("Thresholding",windowName,&amp;thresh,255,detectContours);
+
+    detectContours(0,0);
+    waitKey(0);
+    return 0;
+
+}
+
+void detectContours(int,void*)
+{
+    Mat canny_output,drawing;
+
+    vector&lt;vector&lt;Point&gt;&gt; contours;
+    vector&lt;Vec4i&gt;heirachy;
+
+    //Detect edges using canny
+    cv::Canny(grey,canny_output,thresh,2*thresh);
+
+    namedWindow("Canny");
+    imshow("Canny",canny_output);
+
+    //Find contours
+    cv::findContours(canny_output,contours,heirachy,CV_RETR_TREE,CV_CHAIN_APPROX_SIMPLE,Point(0,0));
+
+    //Setup the output into black
+    drawing = Mat::zeros(canny_output.size(),CV_8UC3);
+
+
+
+    //Draw contours
+    for(int i=0;i&lt;contours.size();i++)
+    {
+        cv::drawContours(drawing,contours,i,Scalar(255,255,255),1,8,heirachy,0,Point());
+    }
+
+    imshow(windowName,drawing);
+
+}
+</code>
+<code>Contours</code>
+<code>Edge detection</code>
+<code>Canny</code>
+<code>findContours()</code>
+<code>Contours</code>

@@ -1,0 +1,11 @@
+<code>[GET("{zipCode}/{loanNumber}/{classification}/{fileName}")]
+public ActionResult GetDocument(string zipCode, string loanNumber, string classification, string fileName)
+{
+    // get byte array from blob storage
+    byte[] doc = _docService.GetDocument(zipCode, loanNumber, classification, fileName);
+    string mimeType = "application/octet-stream";
+    return File(doc, mimeType, fileName);
+}
+</code>
+<code>&lt;a target="_blank" href="http://...controller//GetDocument?zipCode=84016&amp;loanNumber=12345678classification=document&amp;fileName=importantfile.pdf
+</code>
