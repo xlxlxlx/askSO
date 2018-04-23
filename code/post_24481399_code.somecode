@@ -6,7 +6,7 @@
 </code>
 <code>Exception in thread "main" org.apache.spark.SparkException: A master URL must be set
 in your configuration
-    at org.apache.spark.SparkContext.&lt;init&gt;(SparkContext.scala:166)
+    at org.apache.spark.SparkContext.<init>(SparkContext.scala:166)
     at org.apache.spark.examples.mllib.BinaryClassification$.run(BinaryClassification.scala:105)
 </code>
 <code>  spark://10.213.39.125:17088   --algorithm LR --regType L2 --regParam 1.0 
@@ -21,22 +21,22 @@ data/mllib/sample_binary_classification_data.txt
   head("BinaryClassification: an example app for binary classification.")
   opt[Int]("numIterations")
     .text("number of iterations")
-    .action((x, c) =&gt; c.copy(numIterations = x))
+    .action((x, c) => c.copy(numIterations = x))
   opt[Double]("stepSize")
     .text(s"initial step size, default: ${defaultParams.stepSize}")
-    .action((x, c) =&gt; c.copy(stepSize = x))
+    .action((x, c) => c.copy(stepSize = x))
   opt[String]("algorithm")
     .text(s"algorithm (${Algorithm.values.mkString(",")}), " +
     s"default: ${defaultParams.algorithm}")
-    .action((x, c) =&gt; c.copy(algorithm = Algorithm.withName(x)))
+    .action((x, c) => c.copy(algorithm = Algorithm.withName(x)))
   opt[String]("regType")
     .text(s"regularization type (${RegType.values.mkString(",")}), " +
     s"default: ${defaultParams.regType}")
-    .action((x, c) =&gt; c.copy(regType = RegType.withName(x)))
+    .action((x, c) => c.copy(regType = RegType.withName(x)))
   opt[Double]("regParam")
     .text(s"regularization parameter, default: ${defaultParams.regParam}")
-  arg[String]("&lt;input&gt;")
+  arg[String]("<input>")
     .required()
     .text("input paths to labeled examples in LIBSVM format")
-    .action((x, c) =&gt; c.copy(input = x))
+    .action((x, c) => c.copy(input = x))
 </code>

@@ -1,8 +1,8 @@
-<code>&gt;&gt; count_vectorizer = CountVectorizer(min_n=1, max_n=1)
-&gt;&gt; term_freq = count_vectorizer.fit_transform(texts)
-&gt;&gt; transformer = TfidfTransformer()
-&gt;&gt; X = transformer.fit_transform(term_freq) 
-&gt;&gt; print X.shape
+<code>>> count_vectorizer = CountVectorizer(min_n=1, max_n=1)
+>> term_freq = count_vectorizer.fit_transform(texts)
+>> transformer = TfidfTransformer()
+>> X = transformer.fit_transform(term_freq) 
+>> print X.shape
 
 (26, 6323)
 </code>

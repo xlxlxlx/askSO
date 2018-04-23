@@ -1,9 +1,9 @@
-<code>from.weight &lt;- ddply(priority.train, .(From.EMail), summarise, Freq = length(Subject))
+<code>from.weight <- ddply(priority.train, .(From.EMail), summarise, Freq = length(Subject))
 </code>
-<code>Error in attributes(out) &lt;- attributes(col) : 
+<code>Error in attributes(out) <- attributes(col) : 
   'names' attribute [9] must be the same length as the vector [1]
 </code>
-<code>&gt; traceback()
+<code>> traceback()
 11: FUN(1:5[[1L]], ...)
 10: lapply(seq_len(n), extract_col_rows, df = x, i = i)
 9: extract_rows(x$data, x$index[[i]])
@@ -11,16 +11,16 @@
 7: pieces[[i]]
 6: function (i) 
    {
-       piece &lt;- pieces[[i]]
+       piece <- pieces[[i]]
        if (.inform) {
-           res &lt;- try(.fun(piece, ...))
+           res <- try(.fun(piece, ...))
            if (inherits(res, "try-error")) {
-               piece &lt;- paste(capture.output(print(piece)), collapse = "\n")
+               piece <- paste(capture.output(print(piece)), collapse = "\n")
                stop("with piece ", i, ": \n", piece, call. = FALSE)
            }
        }
        else {
-           res &lt;- .fun(piece, ...)
+           res <- .fun(piece, ...)
        }
        progress$step()
        res
@@ -33,14 +33,14 @@
        .inform = .inform, .parallel = .parallel, .paropts = .paropts)
 1: ddply(priority.train, .(From.EMail), summarise, Freq = length(Subject))
 </code>
-<code>&gt; mode(priority.train)
+<code>> mode(priority.train)
 [1] "list"
-&gt; names(priority.train)
+> names(priority.train)
 [1] "Date"       "From.EMail" "Subject"    "Message"    "Path"      
-&gt; sapply(priority.train, mode)
+> sapply(priority.train, mode)
        Date  From.EMail     Subject     Message        Path 
      "list" "character" "character" "character" "character" 
-&gt; sapply(priority.train, class)
+> sapply(priority.train, class)
 $Date
 [1] "POSIXlt" "POSIXt" 
 
@@ -56,18 +56,18 @@ $Message
 $Path
 [1] "character"
 
-&gt; length(priority.train)
+> length(priority.train)
 [1] 5
-&gt; nrow(priority.train)
+> nrow(priority.train)
 [1] 1250
-&gt; ncol(priority.train)
+> ncol(priority.train)
 [1] 5
-&gt; str(priority.train)
+> str(priority.train)
 'data.frame':   1250 obs. of  5 variables:
  $ Date      : POSIXlt, format: "2002-01-31 22:44:14" "2002-02-01 00:53:41" "2002-02-01 02:01:44" "2002-02-01 10:29:23" ...
  $ From.EMail: chr  "removed@removed.ca" "removed@removed.net" "removed@removed.ca" "removed@removed.net" ...
  $ Subject   : chr  "please help a newbie compile mplayer :-)" "re: please help a newbie compile mplayer :-)" "re: please help a newbie compile mplayer :-)" "re: please help a newbie compile mplayer :-)" ...
- $ Message   : chr  "    \n Hello,\n   \n         I just installed redhat 7.2 and I think I have everything \nworking properly.  Anyway I want to in"| __truncated__ "Make sure you rebuild as root and you're in the directory that you\ndownloaded the file.  Also it might complain of a few depen"| __truncated__ "Lance wrote:\n\n&gt;Make sure you rebuild as root and you're in the directory that you\n&gt;downloaded the file.  Also it might compl"| __truncated__ "Once upon a time, rob wrote :\n\n&gt;  I dl'd gcc3 and libgcc3, but I still get the same error message when I \n&gt; try rpm --rebuil"| __truncated__ ...
+ $ Message   : chr  "    \n Hello,\n   \n         I just installed redhat 7.2 and I think I have everything \nworking properly.  Anyway I want to in"| __truncated__ "Make sure you rebuild as root and you're in the directory that you\ndownloaded the file.  Also it might complain of a few depen"| __truncated__ "Lance wrote:\n\n>Make sure you rebuild as root and you're in the directory that you\n>downloaded the file.  Also it might compl"| __truncated__ "Once upon a time, rob wrote :\n\n>  I dl'd gcc3 and libgcc3, but I still get the same error message when I \n> try rpm --rebuil"| __truncated__ ...
  $ Path      : chr  "../03-Classification/data/easy_ham/01061.6610124afa2a5844d41951439d1c1068" "../03-Classification/data/easy_ham/01062.ef7955b391f9b161f3f2106c8cda5edb" "../03-Classification/data/easy_ham/01063.ad3449bd2890a29828ac3978ca8c02ab" "../03-Classification/data/easy_ham/01064.9f4fc60b4e27bba3561e322c82d5f7ff" ...
 Warning messages:
 1: In encodeString(object, quote = "\"", na.encode = FALSE) :
@@ -75,13 +75,13 @@ Warning messages:
 2: In encodeString(object, quote = "\"", na.encode = FALSE) :
   it is not known that wchar_t is Unicode on this platform
 </code>
-<code>&gt; ddply(priority.train, .(Subject))
-Error in attributes(out) &lt;- attributes(col) : 
+<code>> ddply(priority.train, .(Subject))
+Error in attributes(out) <- attributes(col) : 
   'names' attribute [9] must be the same length as the vector [1]
 </code>
-<code>&gt; tmp &lt;- priority.train$Date
-&gt; priority.train$Date &lt;- as.character(priority.train$Date)
-&gt; from.weight &lt;- ddply(priority.train, .(From.EMail), summarise, Freq = length(Subject))
-&gt; priority.train$Date &lt;- tmp
-&gt; rm(tmp)
+<code>> tmp <- priority.train$Date
+> priority.train$Date <- as.character(priority.train$Date)
+> from.weight <- ddply(priority.train, .(From.EMail), summarise, Freq = length(Subject))
+> priority.train$Date <- tmp
+> rm(tmp)
 </code>

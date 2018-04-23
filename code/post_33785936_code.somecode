@@ -18,22 +18,22 @@ print "test accuracy %g"%accuracy.eval(feed_dict={
 </code>
 <code>---------------------------------------------------------------------------
 ValueError                                Traceback (most recent call last)
-&lt;ipython-input-46-a5d1ab5c0ca8&gt; in &lt;module&gt;()
+<ipython-input-46-a5d1ab5c0ca8> in <module>()
      15 
      16 print "test accuracy %g"%accuracy.eval(feed_dict={
----&gt; 17     x: mnist.test.images, y_: mnist.test.labels, keep_prob: 1.0})
+---> 17     x: mnist.test.images, y_: mnist.test.labels, keep_prob: 1.0})
 
 /root/anaconda/lib/python2.7/site-packages/tensorflow/python/framework/ops.pyc in eval(self, feed_dict, session)
     403 
     404     """
---&gt; 405     return _eval_using_default_session(self, feed_dict, self.graph, session)
+--> 405     return _eval_using_default_session(self, feed_dict, self.graph, session)
     406 
     407 
 
 /root/anaconda/lib/python2.7/site-packages/tensorflow/python/framework/ops.pyc in _eval_using_default_session(tensors, feed_dict, graph, session)
    2712     session = get_default_session()
    2713     if session is None:
--&gt; 2714       raise ValueError("Cannot evaluate tensor using eval(): No default "
+-> 2714       raise ValueError("Cannot evaluate tensor using eval(): No default "
    2715                        "session is registered. Use 'with "
    2716                        "DefaultSession(sess)' or pass an explicit session to "
 

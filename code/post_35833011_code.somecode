@@ -3,7 +3,7 @@ condition = tf.placeholder("int32", shape=[1, 1], name = "condition")
 W = tf.Variable(tf.zeros([ins_size**2*3,label_option]), name = "weights")
 b = tf.Variable(tf.zeros([label_option]), name = "bias")
 
-if condition &gt; 0:
+if condition > 0:
     y = tf.nn.softmax(tf.matmul(x, W) + b)
 else:
     y = tf.nn.softmax(tf.matmul(x, W) - b)  

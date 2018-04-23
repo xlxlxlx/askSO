@@ -1,6 +1,6 @@
-<code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;math.h&gt;
+<code>#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
 float randomFloat()
 {
@@ -12,7 +12,7 @@ float randomFloat()
 int calculateOutput(float weights[], float x, float y)
 {
     float sum = x * weights[0] + y * weights[1];
-    return (sum &gt;= 0) ? 1 : -1;
+    return (sum >= 0) ? 1 : -1;
 }
 
 int main(int argc, char *argv[])
@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
     do {
         globalError = 0;
         int p = 0; // iterator
-        for (p = 0; p &lt; patternCount; p++)
+        for (p = 0; p < patternCount; p++)
         {
             // Calculate output.
             int output = calculateOutput(weights, x[p], y[p]);
@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
             if (localError != 0)
             {
                 // Update weights.
-                for (i = 0; i &lt; 2; i++)
+                for (i = 0; i < 2; i++)
                 {
                     float add = learningRate * localError;
                     if (i == 0)
@@ -107,9 +107,9 @@ int main(int argc, char *argv[])
 <code>y</code>
 <code>outputs</code>
 <code>globalError</code>
-<code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;math.h&gt;
+<code>#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
 float randomFloat()
 {
@@ -120,7 +120,7 @@ float randomFloat()
 int calculateOutput(float weights[], float x, float y)
 {
     float sum = x * weights[0] + y * weights[1];
-    return (sum &gt;= 0) ? 1 : -1;
+    return (sum >= 0) ? 1 : -1;
 }
 
 int main(int argc, char *argv[])
@@ -156,7 +156,7 @@ int main(int argc, char *argv[])
     do {
         globalError = 0;
         int p = 0; // iterator
-        for (p = 0; p &lt; patternCount; p++)
+        for (p = 0; p < patternCount; p++)
         {
             // Calculate output.
             int output = calculateOutput(weights, x[p], y[p]);
@@ -167,7 +167,7 @@ int main(int argc, char *argv[])
             if (localError != 0)
             {
                 // Update weights.
-                for (i = 0; i &lt; 2; i++)
+                for (i = 0; i < 2; i++)
                 {
                     float add = learningRate * localError;
                     if (i == 0)
@@ -195,9 +195,9 @@ int main(int argc, char *argv[])
     // Display network generalisation.
     printf("X       Y     Output\n");
     float j, k;
-    for (j = -1; j &lt;= 1; j += .5)
+    for (j = -1; j <= 1; j += .5)
     {
-        for (j = -1; j &lt;= 1; j += .5)
+        for (j = -1; j <= 1; j += .5)
         {
             // Calculate output.
             int output = calculateOutput(weights, j, k);

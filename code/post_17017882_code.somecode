@@ -1,37 +1,37 @@
-<code>&gt;&gt;&gt; import sklearn
-&gt;&gt;&gt; sklearn.__version__
+<code>>>> import sklearn
+>>> sklearn.__version__
 '0.13.1'
-&gt;&gt;&gt; from sklearn import svm
-&gt;&gt;&gt; model = svm.SVC(probability=True)
-&gt;&gt;&gt; X = [[1,2,3], [2,3,4]] # feature vectors
-&gt;&gt;&gt; Y = ['apple', 'orange'] # classes
-&gt;&gt;&gt; model.fit(X, Y)
-&gt;&gt;&gt; model.predict_proba([1,2,3])
+>>> from sklearn import svm
+>>> model = svm.SVC(probability=True)
+>>> X = [[1,2,3], [2,3,4]] # feature vectors
+>>> Y = ['apple', 'orange'] # classes
+>>> model.fit(X, Y)
+>>> model.predict_proba([1,2,3])
 array([[ 0.39097541,  0.60902459]])
 </code>
-<code>&gt;&gt;&gt; zip(model.classes_, model.predict_proba([1,2,3])[0])
+<code>>>> zip(model.classes_, model.predict_proba([1,2,3])[0])
 [('apple', 0.39097541289393828), ('orange', 0.60902458710606167)]
 </code>
-<code>&gt;&gt;&gt; zip(model.classes_, model.predict_proba([2,3,4])[0])
+<code>>>> zip(model.classes_, model.predict_proba([2,3,4])[0])
 [('apple', 0.60705475211840931), ('orange', 0.39294524788159074)]
 </code>
-<code>&gt;&gt;&gt; X = [[1,1,1], [20,20,20]] # feature vectors
-&gt;&gt;&gt; model.fit(X, Y)
-&gt;&gt;&gt; zip(model.classes_, model.predict_proba([1,1,1])[0])
+<code>>>> X = [[1,1,1], [20,20,20]] # feature vectors
+>>> model.fit(X, Y)
+>>> zip(model.classes_, model.predict_proba([1,1,1])[0])
 [('apple', 0.33333332048410247), ('orange', 0.66666667951589786)]
 </code>
-<code>&gt;&gt;&gt; model.predict([1,1,1])[0]
+<code>>>> model.predict([1,1,1])[0]
 'apple'
 </code>
-<code>&gt;&gt;&gt; def train_test(n):
+<code>>>> def train_test(n):
 ...     X = [[1,2,3], [2,3,4]] * n
 ...     Y = ['apple', 'orange'] * n
 ...     model.fit(X, Y)
 ...     print "n =", n, zip(model.classes_, model.predict_proba([1,2,3])[0])
 ... 
-&gt;&gt;&gt; train_test(1)
+>>> train_test(1)
 n = 1 [('apple', 0.39097541289393828), ('orange', 0.60902458710606167)]
-&gt;&gt;&gt; for n in range(1,10):
+>>> for n in range(1,10):
 ...     train_test(n)
 ... 
 n = 1 [('apple', 0.39097541289393828), ('orange', 0.60902458710606167)]

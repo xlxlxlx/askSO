@@ -1,5 +1,5 @@
 <code>PackageManager pm = getPackageManager();
-List&lt;ResolveInfo&gt; activities = pm.queryIntentActivities(new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH), 0);
+List<ResolveInfo> activities = pm.queryIntentActivities(new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH), 0);
 
 if (activities.size() == 0) {
     displayWarning("This device does not support speech recognition");

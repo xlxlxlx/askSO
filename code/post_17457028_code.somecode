@@ -9,7 +9,7 @@
 - cabin:    C85
 - embarked: S
 </code>
-<code>&gt; net &lt;- neuralnet(survived ~ pclass + sex + age + sibsp +
+<code>> net <- neuralnet(survived ~ pclass + sex + age + sibsp +
                    parch + ticket + fare + cabin + embarked, 
                    train, hidden=10, threshold=0.01)
 </code>

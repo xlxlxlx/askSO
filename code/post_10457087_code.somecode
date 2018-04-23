@@ -1,18 +1,18 @@
-<code>List&lt;Torero&gt; listaTorero = tbTlgTorerolHome.findByExample(new Torero());
-List&lt;Torero&gt; listaToreroTemp = ((List&lt;Torero&gt;) ((ArrayList&lt;Torero&gt;) listaTorero).clone()); 
+<code>List<Torero> listaTorero = tbTlgTorerolHome.findByExample(new Torero());
+List<Torero> listaToreroTemp = ((List<Torero>) ((ArrayList<Torero>) listaTorero).clone()); 
 
 Clasificacion clasificacion = new Clasificacion();
 
-Iterator&lt;Torero&gt; iterTorero = clasificacion.getClasificacion(listaTorero, torero).iterator(); //Sorting List
+Iterator<Torero> iterTorero = clasificacion.getClasificacion(listaTorero, torero).iterator(); //Sorting List
 </code>
-<code>public List&lt;Torero&gt; getClasificacion(List&lt;Torero&gt; listaToreroTemp, Torero torero)
+<code>public List<Torero> getClasificacion(List<Torero> listaToreroTemp, Torero torero)
 {
 
-    List&lt;Torero&gt; listaTorero = new ArrayList&lt;Torero&gt;();
+    List<Torero> listaTorero = new ArrayList<Torero>();
 
     Collections.sort(listaToreroTemp,new ToreroClasifiacionComparator());
 
-    Iterator&lt;Torero&gt; iterTorero = listaToreroTemp.iterator();
+    Iterator<Torero> iterTorero = listaToreroTemp.iterator();
     int index=1;
     while(iterTorero.hasNext())
     {

@@ -18,7 +18,7 @@ public class Speech {
   public static void main(String[] args) {
     ConfigurationManager cm;
 
-    if (args.length &gt; 0) {
+    if (args.length > 0) {
         cm = new ConfigurationManager(args[0]);
     } else {
         ///tmp/helloworld.config.xml

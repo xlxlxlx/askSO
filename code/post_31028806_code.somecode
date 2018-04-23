@@ -10,7 +10,7 @@
 <code>val toInt    = udf[Int, String]( _.toInt)
 val dataFixed = data.withColumn("age", toInt(data("age"))).withColumn("hours_per_week",toInt(data("hours_per_week")))
 </code>
-<code>scala&gt; dataFixed.printSchema
+<code>scala> dataFixed.printSchema
 root
  |-- age: integer (nullable = true)
  |-- hours_per_week: integer (nullable = true)

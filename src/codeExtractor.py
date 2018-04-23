@@ -36,7 +36,7 @@ for post_f in os.listdir(post_path):
     if not codeFinder:
         continue
     
-    code = "\n".join(str(tag) for tag in codeFinder)
+    code = "\n".join(str(tag).replace('&gt;','>').replace('&lt;','<') for tag in codeFinder)
     
 
     

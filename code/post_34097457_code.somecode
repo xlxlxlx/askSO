@@ -7,19 +7,19 @@
 
     # Declaring variable buffer for weights W and bias b
     # Layer structure [n_fft, n_fft, n_fft, n_fft]
-    # Input -&gt; Layer 1
+    # Input -> Layer 1
     struct_w = [n_fft, n_fft]
     struct_b = [n_fft]
     W1 = weight_variable(struct_w, 'W1')
     b1 = bias_variable(struct_b, 'b1')
     h1 = tf.nn.sigmoid(tf.matmul(x, W1) + b1)
 
-    # Layer1 -&gt; Layer 2
+    # Layer1 -> Layer 2
     W2 = weight_variable(struct_w, 'W2')
     b2 = bias_variable(struct_b, 'b2')
     h2 = tf.nn.sigmoid(tf.matmul(h1, W2) + b2)
 
-    # Layer2 -&gt; output
+    # Layer2 -> output
     W3 = weight_variable(struct_w, 'W3')
     b3 = bias_variable(struct_b, 'b3')
     y = tf.nn.sigmoid(tf.matmul(h2, W3) + b3)

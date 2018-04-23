@@ -36,7 +36,7 @@ for modelImage in modelImages:
         res,dist =  int(results[0][0]),dists[0][0]
 
 
-        if dist&lt;0.1: # draw matched keypoints in red color
+        if dist<0.1: # draw matched keypoints in red color
             color = (0,0,255)
 
         else:  # draw unmatched in blue color

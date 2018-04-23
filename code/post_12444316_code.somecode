@@ -1,5 +1,5 @@
 <code>Traceback (most recent call last):
-  File "/Users/.../srl/main.py", line 32, in &lt;module&gt;
+  File "/Users/.../srl/main.py", line 32, in <module>
     argident_sys.train_classifier()
   File "/Users/.../srl/identification.py", line 194, in train_classifier
     feat_selector.fit(train_argcands_feats,train_argcands_target)

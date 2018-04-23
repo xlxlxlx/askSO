@@ -32,17 +32,17 @@ At the time of the exception, the container was:
 Resulting in: An exception occurred while trying to create an instance of type '#Btb.#Rtb'.
 
 Resulting in: Cannot activate part '#Btb.#Rtb'.
-Element: #Btb.#Rtb --&gt;  #Btb.#Rtb
+Element: #Btb.#Rtb -->  #Btb.#Rtb
 
 Resulting in: Cannot get export '#Btb.#Rtb (ContractName="Microsoft.VisualStudio.Text.Classification.IClassifierProvider")' from part '#Btb.#Rtb'.
-Element: #Btb.#Rtb (ContractName="Microsoft.VisualStudio.Text.Classification.IClassifierProvider") --&gt;  #Btb.#Rtb
+Element: #Btb.#Rtb (ContractName="Microsoft.VisualStudio.Text.Classification.IClassifierProvider") -->  #Btb.#Rtb
 
    at System.ComponentModel.Composition.Hosting.CompositionServices.GetExportedValueFromComposedPart(ImportEngine engine, ComposablePart part, ExportDefinition definition)
    at System.ComponentModel.Composition.Hosting.CatalogExportProvider.GetExportedValue(CatalogPart part, ExportDefinition export, Boolean isSharedPart)
    at System.ComponentModel.Composition.Hosting.CatalogExportProvider.CatalogExport.GetExportedValueCore()
    at System.ComponentModel.Composition.Primitives.Export.get_Value()
    at System.ComponentModel.Composition.ExportServices.GetCastedExportedValue[T](Export export)
-   at System.ComponentModel.Composition.ExportServices.&lt;&gt;c__DisplayClass4`2.&lt;CreateStronglyTypedLazyOfTM&gt;b__1()
+   at System.ComponentModel.Composition.ExportServices.<>c__DisplayClass4`2.<CreateStronglyTypedLazyOfTM>b__1()
    at System.Lazy`1.CreateValue()
    at System.Lazy`1.LazyInitValue()
    at System.Lazy`1.get_Value()

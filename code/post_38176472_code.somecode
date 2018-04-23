@@ -1,7 +1,7 @@
 <code>[0 1 2]
 [0 1 2]
 Traceback (most recent call last):
-  File "/media/joyce/oreo/python/machine_learn/VisualizingADecisionTree.py", line 34, in &lt;module&gt;
+  File "/media/joyce/oreo/python/machine_learn/VisualizingADecisionTree.py", line 34, in <module>
     graph.write_pdf("iris.pdf")
 AttributeError: 'list' object has no attribute 'write_pdf'
 [Finished in 0.4s with exit code 1]

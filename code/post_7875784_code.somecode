@@ -10,8 +10,8 @@ manhattan_distance += abs(x - goal_x) + abs(y - goal_y)
    int distance = 0;
    if (getSize(goal) == size){ // both states are the same size
       int i, j;
-      for(i=0; i&lt;size; i++){
-         for(j=0; j&lt;size; j++){ // iterate over all tiles
+      for(i=0; i<size; i++){
+         for(j=0; j<size; j++){ // iterate over all tiles
             int a = getStateValue(b, i, j); // what is the number on this tile?
             if (a != 'B'){ // if it's not the blank tile
                int final_cordinates[2];

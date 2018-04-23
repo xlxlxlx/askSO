@@ -1,9 +1,9 @@
 <code> **in the script.js**
 groupedList[aIndex].CATEGORY = existingCategory+'\n'+thisCategory;
-groupedList[aIndex].CATEGORY = existingCategory+'&lt;br&gt;'+thisCategory;
+groupedList[aIndex].CATEGORY = existingCategory+'<br>'+thisCategory;
 </code>
-<code>&lt;br&gt;</code>
-<code>Instinct&lt;br&gt;Media
+<code><br></code>
+<code>Instinct<br>Media
 </code>
 <code>Instinct
 Media
@@ -39,9 +39,9 @@ Media
         var groupedList = [];
         var idList = [];
         newlist = filter(newlist,{TESTQUOTE:searchCrit.searchField});
-        for(i=0;i&lt;10;i++){
+        for(i=0;i<10;i++){
             aIndex = idList.contains(newlist[i].TESTIMONIALID);
-            if(aIndex &gt;= 0){
+            if(aIndex >= 0){
                 thisKeyword = newlist[i].KEYWORD;
                 thisClassification = newlist[i].CLASSIFICATION;
                 thisCategory = newlist[i].CATEGORY;
@@ -55,7 +55,7 @@ Media
                     groupedList[aIndex].CLASSIFICATION = existingClassification+' \n '+thisClassification;
                 } 
                 if(thisCategory != '' &amp;&amp; existingCategory.indexOf(thisCategory) == -1){
-                    groupedList[aIndex].CATEGORY = existingCategory+'&lt;br&gt;'+thisCategory;
+                    groupedList[aIndex].CATEGORY = existingCategory+'<br>'+thisCategory;
                 }               
             } else {
                 idList.push(newlist[i].TESTIMONIALID);
@@ -72,19 +72,19 @@ Array.prototype.contains = function ( needle ) {
    return -1;
 }
 </code>
-<code>&lt;div ng-repeat="q in filteredQuotes" class="well clearfix"&gt;
-                        &lt;h3&gt;{{q.TITLE}}&lt;/h3&gt;
-                        &lt;div class="row-fluid" style="margin-bottom:5px;"&gt;
-                            &lt;div class="span3 well-small whBG"&gt;&lt;h4&gt;Classification&lt;/h4&gt;{{q.CLASSIFICATION}}&lt;/div&gt;
-                            &lt;div class="span3 well-small whBG pipeHolder"&gt;&lt;h4&gt;Categories&lt;/h4&gt;{{q.CATEGORY}}&lt;/div&gt;
-                            &lt;div class="span3 well-small whBG"&gt;&lt;h4&gt;Key Words&lt;/h4&gt;{{q.KEYWORD}}&lt;/div&gt;
-                            &lt;div class="span3 well-small whBG"&gt;&lt;h4&gt;Additional&lt;/h4&gt;Industry = {{q.INDUSTRY}}&lt;br&gt;Source = {{q.SOURCE}}&lt;/div&gt;
-                        &lt;/div&gt;
-                        &lt;div class="well whBG"&gt;{{q.TESTQUOTE}}&lt;/div&gt;
-                        &lt;div class="tiny"&gt;
-                            Source comment : {{q.SOURCECOMMENT}}&lt;br&gt;
+<code><div ng-repeat="q in filteredQuotes" class="well clearfix">
+                        <h3>{{q.TITLE}}</h3>
+                        <div class="row-fluid" style="margin-bottom:5px;">
+                            <div class="span3 well-small whBG"><h4>Classification</h4>{{q.CLASSIFICATION}}</div>
+                            <div class="span3 well-small whBG pipeHolder"><h4>Categories</h4>{{q.CATEGORY}}</div>
+                            <div class="span3 well-small whBG"><h4>Key Words</h4>{{q.KEYWORD}}</div>
+                            <div class="span3 well-small whBG"><h4>Additional</h4>Industry = {{q.INDUSTRY}}<br>Source = {{q.SOURCE}}</div>
+                        </div>
+                        <div class="well whBG">{{q.TESTQUOTE}}</div>
+                        <div class="tiny">
+                            Source comment : {{q.SOURCECOMMENT}}<br>
                             Additional Comment : {{q.COMMENT}}
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
+                        </div>
+                    </div>
+                </div>
 </code>

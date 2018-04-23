@@ -7,11 +7,11 @@ class B(object):
         print "B __eq__ called"
         return self.value == other
 
-&gt;&gt;&gt; a = A()
-&gt;&gt;&gt; a.value = 3
-&gt;&gt;&gt; b = B()
-&gt;&gt;&gt; b.value = 4
-&gt;&gt;&gt; a == b
+>>> a = A()
+>>> a.value = 3
+>>> b = B()
+>>> b.value = 4
+>>> a == b
 "A __eq__ called"
 "B __eq__ called"
 False

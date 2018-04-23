@@ -7,6 +7,6 @@ from sklearn.naive_bayes import BernoulliNB
 clf = BernoulliNB()
 clf.fit(feature,classes)
 clf.predict_proba([0,1,1,0])
-&gt;&gt; array([[ 0.48247836,  0.40709111,  0.11043053]])
+>> array([[ 0.48247836,  0.40709111,  0.11043053]])
 </code>
 <code>clf.getClasses() = ['one','two','three']?</code>

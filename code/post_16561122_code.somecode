@@ -6,7 +6,7 @@
             {
 0.2%            BranchNodeData b = node.BranchData;
 0.5%            node = b.Child2;
-12.8%           if (inputs[b.SplitInputIndex] &lt;= b.SplitValue)
+12.8%           if (inputs[b.SplitInputIndex] <= b.SplitValue)
 0.8%                node = b.Child1;
             }
 
@@ -15,19 +15,19 @@
 </code>
 <code>public sealed class BranchNodeData
 {
-    /// &lt;summary&gt;
+    /// <summary>
     /// The index of the data item in the input array on which we need to split
-    /// &lt;/summary&gt;
+    /// </summary>
     internal int SplitInputIndex = 0;
 
-    /// &lt;summary&gt;
+    /// <summary>
     /// The value that we should split on
-    /// &lt;/summary&gt;
+    /// </summary>
     internal float SplitValue = 0;
 
-    /// &lt;summary&gt;
+    /// <summary>
     /// The nodes children
-    /// &lt;/summary&gt;
+    /// </summary>
     internal ScTreeNode Child1;
     internal ScTreeNode Child2;
 }
@@ -47,9 +47,9 @@ instance class OptimalTreeSearch.ScTreeNode GetNodeForState (
     )
 
     IL_0000: ldarg.0
-    IL_0001: ldfld class [mscorlib]System.Collections.Generic.List`1&lt;class OptimalTreeSearch.ScRootNode&gt; OptimalTreeSearch.ScSearchTree::RootNodes
+    IL_0001: ldfld class [mscorlib]System.Collections.Generic.List`1<class OptimalTreeSearch.ScRootNode> OptimalTreeSearch.ScSearchTree::RootNodes
     IL_0006: ldarg.1
-    IL_0007: callvirt instance !0 class [mscorlib]System.Collections.Generic.List`1&lt;class OptimalTreeSearch.ScRootNode&gt;::get_Item(int32)
+    IL_0007: callvirt instance !0 class [mscorlib]System.Collections.Generic.List`1<class OptimalTreeSearch.ScRootNode>::get_Item(int32)
     IL_000c: ldfld class OptimalTreeSearch.ScTreeNode OptimalTreeSearch.ScRootNode::TreeNode
     IL_0011: stloc.0
     IL_0012: br.s IL_0039

@@ -2,7 +2,7 @@
 matrix2 = tf.constant([[2.],[2.]])
 product = tf.matmul(matrix1, matrix2)
 </code>
-<code>&lt;tensorflow.python.framework.ops.Tensor object at 0x10470fcd0&gt;
+<code><tensorflow.python.framework.ops.Tensor object at 0x10470fcd0>
 </code>
 <code>product</code>
 <code>print product

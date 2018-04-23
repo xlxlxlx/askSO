@@ -9,9 +9,9 @@
     {
         var ratio = 1;
 
-        if(img.width &gt; maxWidth)
+        if(img.width > maxWidth)
             ratio = maxWidth / img.width;
-        else if(img.height &gt; maxHeight)
+        else if(img.height > maxHeight)
             ratio = maxHeight / img.height;
 
         canvasCopy.width = img.width;

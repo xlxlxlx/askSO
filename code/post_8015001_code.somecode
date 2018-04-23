@@ -2,14 +2,14 @@
 {
             var ranges = new double[_original.Height];
 
-            for (int y = 0; y &lt; _original.Height; y++ )
+            for (int y = 0; y < _original.Height; y++ )
             {
                 ranges[y] = 0;
-                var dx = new List&lt;int&gt;();
+                var dx = new List<int>();
                 int last = 0;
                 int x = 0; 
 
-                while (last == 0 &amp;&amp; x&lt;_original.Width)
+                while (last == 0 &amp;&amp; x<_original.Width)
                 {
                     if (_bit[x, y])
                         last = x;
@@ -22,7 +22,7 @@
                     continue;
                 }
 
-                for (x = last; x&lt;_original.Width; x++)
+                for (x = last; x<_original.Width; x++)
                 {
                     if (!_bit[x, y]) continue; 
 
@@ -32,7 +32,7 @@
                     }
                     last = x;
                 }
-                if (dx.Count &gt; 2)
+                if (dx.Count > 2)
                 {
                     dx.Sort();
                     ranges[y] = dx[dx.Count / 2];
@@ -43,9 +43,9 @@
             }
 
         var maximum = ranges.Max();
-        for (int i = 0; i &lt; ranges.Length; i++)
+        for (int i = 0; i < ranges.Length; i++)
         {
-            if (Math.Abs(ranges[i] - 0) &lt; 0.9)
+            if (Math.Abs(ranges[i] - 0) < 0.9)
                 ranges[i] = maximum;
         }
         return ranges;

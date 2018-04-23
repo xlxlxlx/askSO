@@ -1,8 +1,8 @@
-<code>&gt;&gt;&gt; import tensorflow as tf
+<code>>>> import tensorflow as tf
 Traceback (most recent call last):
-  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/pywrap_tensorflow.py", line 41, in &lt;module&gt;
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/pywrap_tensorflow.py", line 41, in <module>
     from tensorflow.python.pywrap_tensorflow_internal import *
-  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/pywrap_tensorflow_internal.py", line 28, in &lt;module&gt;
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/pywrap_tensorflow_internal.py", line 28, in <module>
     _pywrap_tensorflow_internal = swig_import_helper()
   File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/pywrap_tensorflow_internal.py", line 24, in swig_import_helper
     _mod = imp.load_module('_pywrap_tensorflow_internal', fp, pathname, description)
@@ -15,17 +15,17 @@ ImportError: libcusolver.so.8.0: cannot open shared object file: No such file or
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
-  File "/usr/local/lib/python3.5/dist-packages/tensorflow/__init__.py", line 24, in &lt;module&gt;
+  File "<stdin>", line 1, in <module>
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/__init__.py", line 24, in <module>
     from tensorflow.python import *
-  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/__init__.py", line 51, in &lt;module&gt;
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/__init__.py", line 51, in <module>
     from tensorflow.python import pywrap_tensorflow
-  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/pywrap_tensorflow.py", line 52, in &lt;module&gt;
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/pywrap_tensorflow.py", line 52, in <module>
     raise ImportError(msg)
 ImportError: Traceback (most recent call last):
-  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/pywrap_tensorflow.py", line 41, in &lt;module&gt;
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/pywrap_tensorflow.py", line 41, in <module>
     from tensorflow.python.pywrap_tensorflow_internal import *
-  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/pywrap_tensorflow_internal.py", line 28, in &lt;module&gt;
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/pywrap_tensorflow_internal.py", line 28, in <module>
     _pywrap_tensorflow_internal = swig_import_helper()
   File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/pywrap_tensorflow_internal.py", line 24, in swig_import_helper
     _mod = imp.load_module('_pywrap_tensorflow_internal', fp, pathname, description)

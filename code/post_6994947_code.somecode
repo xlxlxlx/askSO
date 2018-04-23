@@ -2,8 +2,8 @@
 foreach my $file (@files)
 {
     open(IN,$file) or die $!;
-    &lt;IN&gt;;
-    while(&lt;IN&gt;)
+    <IN>;
+    while(<IN>)
     {
        $_='~s/blue/red/g';
        print IN $file;

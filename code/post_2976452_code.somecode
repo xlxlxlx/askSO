@@ -20,7 +20,7 @@
         print sum(accuracy[-5:])/5
         #if i % 100 == 0:
         print 'error %-14f' % error
-        if ? &lt; ?:
+        if ? < ?:
             break
 </code>
 <code>1

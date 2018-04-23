@@ -35,9 +35,9 @@ for x in range(w):
     for y in range(h):
         aaa = pix[x, y]
         bbb = aaa[0] + aaa[1] + aaa[2] #total value
-        if bbb&lt;=threshold:
+        if bbb<=threshold:
             area[x][y] = 1
-        if bbb&gt;threshold:
+        if bbb>threshold:
             area[x][y] = 0
 np.set_printoptions(threshold='nan', linewidth=10)
 
@@ -72,7 +72,7 @@ for x in range(40): # width (later)
 #find height of the letter
 #find the middle of the letter
 #middle = [width/2][height/2] #?
-#divide letter into 30 parts --&gt; 5 x 6 array
+#divide letter into 30 parts --> 5 x 6 array
 
 #model letter
 #letter A-Z, a-z, 0-9 (maybe more)

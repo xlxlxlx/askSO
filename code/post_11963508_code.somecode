@@ -6,15 +6,15 @@
 5       0.560     0.735        0.554  0.48148148 0.8168083    0.4603175 0.00000000
 6       0.029     0.302        0.558  0.08547009 0.3928234    0.4603175 0.00000000
 </code>
-<code>if (cosinFcolor &gt; 0.5 &amp; cosinFcolor &lt;= 0.6)
+<code>if (cosinFcolor > 0.5 &amp; cosinFcolor <= 0.6)
    bin = 1
-if (cosinFcolor &gt; 0.6 &amp; cosinFcolor &lt;= 0.7)
+if (cosinFcolor > 0.6 &amp; cosinFcolor <= 0.7)
    bin = 2
-if (cosinFcolor &gt; 0.7 &amp; cosinFcolor =&lt; 0.8)
+if (cosinFcolor > 0.7 &amp; cosinFcolor =< 0.8)
    bin = 3
-if (cosinFcolor &gt; 0.8 &amp; cosinFcolor &lt;=0.9)
+if (cosinFcolor > 0.8 &amp; cosinFcolor <=0.9)
    bin = 4
-if (cosinFcolor &gt; 0.9 &amp; cosinFcolor &lt;= 1.0)
+if (cosinFcolor > 0.9 &amp; cosinFcolor <= 1.0)
    bin = 5
 else
    bin = 0

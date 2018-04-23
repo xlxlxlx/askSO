@@ -7,5 +7,5 @@ public ActionResult GetDocument(string zipCode, string loanNumber, string classi
     return File(doc, mimeType, fileName);
 }
 </code>
-<code>&lt;a target="_blank" href="http://...controller//GetDocument?zipCode=84016&amp;loanNumber=12345678classification=document&amp;fileName=importantfile.pdf
+<code><a target="_blank" href="http://...controller//GetDocument?zipCode=84016&amp;loanNumber=12345678classification=document&amp;fileName=importantfile.pdf
 </code>

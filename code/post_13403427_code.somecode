@@ -2,46 +2,46 @@
 library(doParallel)
 
 set.seed(42)
-myControl &lt;- trainControl(method='cv', index=createFolds(iris$Species))
+myControl <- trainControl(method='cv', index=createFolds(iris$Species))
 
 set.seed(42)
-model1 &lt;- train(Species~., iris, method='rf', trControl=myControl)
+model1 <- train(Species~., iris, method='rf', trControl=myControl)
 
 set.seed(42)
-model2 &lt;- train(Species~., iris, method='rf', trControl=myControl)
+model2 <- train(Species~., iris, method='rf', trControl=myControl)
 
-&gt; all.equal(predict(model1, type='prob'), predict(model2, type='prob'))
+> all.equal(predict(model1, type='prob'), predict(model2, type='prob'))
 [1] TRUE
 </code>
-<code>cl &lt;- makeCluster(detectCores())
+<code>cl <- makeCluster(detectCores())
 registerDoParallel(cl)
 
 set.seed(42)
-myControl &lt;- trainControl(method='cv', index=createFolds(iris$Species))
+myControl <- trainControl(method='cv', index=createFolds(iris$Species))
 
 set.seed(42)
-model1 &lt;- train(Species~., iris, method='rf', trControl=myControl)
+model1 <- train(Species~., iris, method='rf', trControl=myControl)
 
 set.seed(42)
-model2 &lt;- train(Species~., iris, method='rf', trControl=myControl)
+model2 <- train(Species~., iris, method='rf', trControl=myControl)
 
 stopCluster(cl)
 
-&gt; all.equal(predict(model1, type='prob'), predict(model2, type='prob'))
+> all.equal(predict(model1, type='prob'), predict(model2, type='prob'))
 [1] "Component 2: Mean relative difference: 0.01813729"
 [2] "Component 3: Mean relative difference: 0.02271638"
 </code>
 <code>train</code>
 <code>library(doRNG)
-cl &lt;- makeCluster(detectCores())
+cl <- makeCluster(detectCores())
 registerDoParallel(cl)
 registerDoRNG()
 
 set.seed(42)
-myControl &lt;- trainControl(method='cv', index=createFolds(iris$Species))
+myControl <- trainControl(method='cv', index=createFolds(iris$Species))
 
 set.seed(42)
-&gt; model1 &lt;- train(Species~., iris, method='rf', trControl=myControl)
+> model1 <- train(Species~., iris, method='rf', trControl=myControl)
 Error in list(e1 = list(args = seq(along = resampleIndex)(), argnames = "iter",  : 
   nested/conditional foreach loops are not supported yet.
 See the package's vignette for a work around.
@@ -51,18 +51,18 @@ See the package's vignette for a work around.
 <code>set.seed(42)
 library(caret)
 library(doSNOW)
-cl &lt;- makeCluster(8, type = "SOCK")
+cl <- makeCluster(8, type = "SOCK")
 registerDoSNOW(cl)
 
-myControl &lt;- trainControl(method='cv', index=createFolds(iris$Species))
+myControl <- trainControl(method='cv', index=createFolds(iris$Species))
 
 clusterSetupRNG(cl, seed=rep(12345,6))
-a &lt;- clusterCall(cl, runif, 10000)
-model1 &lt;- train(Species~., iris, method='rf', trControl=myControl)
+a <- clusterCall(cl, runif, 10000)
+model1 <- train(Species~., iris, method='rf', trControl=myControl)
 
 clusterSetupRNG(cl, seed=rep(12345,6))
-b &lt;- clusterCall(cl, runif, 10000)
-model2 &lt;- train(Species~., iris, method='rf', trControl=myControl)
+b <- clusterCall(cl, runif, 10000)
+model2 <- train(Species~., iris, method='rf', trControl=myControl)
 
 all.equal(a, b)
 [1] TRUE

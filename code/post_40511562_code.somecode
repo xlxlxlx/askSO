@@ -1,8 +1,8 @@
 <code>AttributeError                            Traceback (most recent call last)
-`&lt;ipython-input-18-3446420b5935&gt;` in `&lt;module&gt;`()
+`<ipython-input-18-3446420b5935>` in `<module>`()
   2 
   3 with tf.Session(graph=graph) as session:
-----&gt; 4   tf.global_variables_initializer().run()
+----> 4   tf.global_variables_initializer().run()
 
 AttributeError: 'module' object has no attribute 'global_variables_initializer'
 </code>
