@@ -1,3 +1,0 @@
-<code>Create an object called MyVar and initialize it to 10;
-Take MyVar and call MyMethod() with parameters. . .
-</code>

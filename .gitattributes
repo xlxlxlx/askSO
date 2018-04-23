@@ -1,2 +1,2 @@
-*.txt linguist-detectable=true
-*.txt linguist-documentation=false
+*.somecode linguist-detectable=true
+*.somecode linguist-documentation=false

@@ -1,9 +1,0 @@
-<code>&gt;&gt;&gt; from sklearn import svm
-
-Traceback (most recent call last):
-  File "&lt;pyshell#17&gt;", line 1, in &lt;module&gt;
-   from sklearn import svm
-  File "C:\Python27\lib\site-packages\sklearn\__init__.py", line 16, in &lt;module&gt;
-   from . import check_build
-ImportError: cannot import name check_build
-</code>

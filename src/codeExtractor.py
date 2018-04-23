@@ -40,7 +40,7 @@ for post_f in os.listdir(post_path):
     
 
     
-    with open(code_path+"post_"+post_id+"_code.txt","w", encoding='utf-8') as outf:
+    with open(code_path+"post_"+post_id+"_code.somecode","w", encoding='utf-8') as outf:
         outf.write(code)
     
     
