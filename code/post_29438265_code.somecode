@@ -1,3 +1,0 @@
-<code>X, Xt, userInfo, userInfo_train = sklearn.cross_validation.train_test_split(X, userInfo)   
-</code>
-<code>StratifiedKFold</code>

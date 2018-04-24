@@ -1,3 +1,0 @@
-<code>toDoublefunc = UserDefinedFunction(lambda x: x,DoubleType())
-changedTypedf = joindf.withColumn("label",toDoublefunc(joindf['show']))
-</code>

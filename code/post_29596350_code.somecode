@@ -1,4 +1,0 @@
-<code>$ wget http://bit.ly/miniconda
-$ bash miniconda
-$ conda install numpy pandas scipy matplotlib scikit-learn nltk ipython-notebook seaborn
-</code>

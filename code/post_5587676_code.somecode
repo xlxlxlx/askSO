@@ -1,6 +1,0 @@
-<code>x = cumsum(c(0, runif(100, -1, +1)))
-y = cumsum(c(0, runif(100, -1, +1)))
-fit = lm(y ~ x)
-summary(fit)
-</code>
-<code>summary(fit)</code>

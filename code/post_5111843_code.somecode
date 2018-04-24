@@ -1,8 +1,0 @@
-<code>"SELECT start.asciiname, ende.asciiname, distance_sphere(start.geom, ende.geom) as distance " +
-"FROM geoname As start, geoname As ende WHERE start.geonameid = 2950159 AND start.geonameid <> ende.geonameid " +
-"AND ST_DWithin(start.geom, ende.geom, 300) order by distance limit 5"
-</code>
-<code>"SELECT start.asciiname, ende.asciiname, distance_sphere(start.geom, ende.geom) as distance " +
-"FROM geoname As start, geoname As ende WHERE start.geonameid = 2950159 AND start.geonameid <> ende.geonameid AND expand(start.geom, 300) &amp;&amp; ende.geom " +
-"order by distance limit 5"
-</code>

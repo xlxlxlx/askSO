@@ -9,7 +9,7 @@ import json
 from shutil import copyfile
 from pathlib import Path
 
-post_path = "../output/questionsMLHigh/"
+post_path = "../output/questionsMLLow/"
 
 #post_path = "E:/tmp/output/questionsMLHigh/"
 
@@ -40,7 +40,7 @@ for post_f in os.listdir(post_path):
     
 
     
-    with open(code_path+"post_"+post_id+"_code.somecode","w", encoding='utf-8') as outf:
+    with open(code_path+"post_"+post_id+"_code.txt","w", encoding='utf-8') as outf:
         outf.write(code)
     
     

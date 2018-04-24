@@ -1,9 +1,0 @@
-<code>text = "To be or not to be thats the question."
-
-// returns ISO 639 Alpha-2 code
-language = detect(text);
-
-print(language);
-</code>
-<code>EN
-</code>

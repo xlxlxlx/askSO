@@ -1,4 +1,0 @@
-<code>from sklearn.preprocessing import Imputer
-imp = Imputer(missing_values='NaN', strategy='most_frequent', axis=0)
-imp.fit(df) 
-</code>
