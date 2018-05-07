@@ -19,8 +19,8 @@ from shutil import copyfile
 from pathlib import Path
 from bs4 import BeautifulSoup
 
-output_path_Q = "../output/questionsMLMed/"
-output_path_A = "../output/answersMLMed/"
+output_path_Q = "../output/questionsMLHigh/"
+output_path_A = "../output/answersMLHigh/"
 
 filter_rst = {}
     
@@ -42,7 +42,7 @@ p_stemmer = PorterStemmer()
 
 import xml.etree.ElementTree
 
-out_f = "../output/ldaSumMed.txt"
+out_f = "../output/ldaSumHigh.txt"
 
 for post_f in os.listdir(output_path_Q):
     if not post_f.endswith(".xml"):
@@ -133,6 +133,10 @@ for post_f in os.listdir(output_path_Q):
 
     # reverse_map = dict((ldamodel.id2word[id],id) for id in ldamodel.id2word)
     
+    
+    for topic in lda.show_topics(num_topics=numTopics, formatted=False, topn=20):
+        print(topic)
+        
     with open(out_f, "a", encoding='utf-8') as out_file:
         out_file.write("post_%s\n" %post_id)
         out_file.write("title+tags+text\n")
@@ -142,7 +146,7 @@ for post_f in os.listdir(output_path_Q):
             out_file.write('\n')
             
         out_file.write('code\n')
-        code_list = code_ldamodel.print_topics(num_topics=2, num_words=8)
+        code_list = code_ldamodel.print_topics(num_topics=topic_k, num_words=8)
         for i in range(topic_k):
             out_file.write(code_list[i][1])
             out_file.write('\n')

@@ -4,8 +4,9 @@
 import os
 import json
 
+item = "Low_Q"
 
-out_file = '../output/codeGuessSumLow_Q.txt'
+out_file = '../output/codeGuessSum'+item+'.txt'
 
 stack = []
 lanDict = {}
@@ -18,12 +19,15 @@ with open(out_file) as code_f:
             stack.append(postID)
         elif "guesslang" in line:
             lan = line.split("The source code is written in ")[1]
+            postID = stack.pop()
             if not lan in lanDict:
                 lanDict[lan] = [postID]
             else:
                 lanDict[lan].append(postID)
+
+lanDict['"Unknown"'] = stack
                 
-with open("../postLanMLLow_Q.json","w") as metaf:        
+with open("../postLanML"+item+".json","w") as metaf:        
     metaf.write(json.dumps(lanDict))
 
 
